@@ -1,14 +1,18 @@
-import './index.css'
+import "./index.css";
+import AppRoutes from "../src/routes/AppRoutes";
+import Navbar from "./components/common/Navbar";
+import Footer from "./components/common/Footer";
 
-function App() {
-
+const App: React.FC = () => {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </>
-  )
-}
+    <div className="flex min-h-screen flex-col">
+      <Navbar />
+      <main className="flex-1">
+        <AppRoutes />
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
-export default App
+export default App;
