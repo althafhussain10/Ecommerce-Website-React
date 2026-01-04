@@ -1,7 +1,8 @@
 import "./index.css";
-import AppRoutes from "../src/routes/AppRoutes";
+
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
+import AppRoutes from "./routes/AppRoutes";
 
 const App: React.FC = () => {
   return (
