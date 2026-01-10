@@ -49,7 +49,7 @@ const Navbar = () => {
       </div>
 
       {/* Main Header */}
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <div className="flex h-20 items-center justify-between">
           {/* Mobile Menu Button */}
           <button
@@ -135,7 +135,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="border-t border-gray-200 bg-white lg:hidden">
-          <nav className="space-y-2 px-4 py-6">
+          <nav className="space-y-2 px-4 py-6 w-full box-border">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
