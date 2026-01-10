@@ -12,7 +12,7 @@ const NotFound = () => {
     <div className="flex min-h-screen items-center justify-center bg-muted">
       <div className="text-center">
         <img
-          src="./src/assets/images/404.png"
+          src="404.png"
           alt="Page Not Found"
           className="mx-auto mb-6 w-64 sm:w-80"
         />
