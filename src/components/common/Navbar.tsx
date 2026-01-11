@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import SearchResults from "../ui/SearchResults";
 import { products } from "../../data/products";
 import CartSheet from "../../pages/CartSheet";
+import { Button } from "../ui/button";
+import { useWishlist } from "../../context/WishListContext";
+import AccountDropdown from "./AccountDropdown";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -19,6 +22,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const { totalItems: wishlistCount } = useWishlist();
 
 
   const searchResults = useMemo(() => {
@@ -52,13 +56,15 @@ const Navbar = () => {
       <div className="container mx-auto">
         <div className="flex h-20 items-center justify-between">
           {/* Mobile Menu Button */}
-          <button
-            className="rounded-md p-2 transition-colors hover:bg-gray-100 lg:hidden"
+          <Button
+            variant="ghost"
+            size="icon"
+            className="lg:hidden"
             onClick={() => setIsMenuOpen((v) => !v)}
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          </Button>
 
           {/* Logo */}
           <Link to="/" className="flex items-center">
@@ -81,28 +87,34 @@ const Navbar = () => {
           </nav>
 
           {/* Icons */}
-          <div className="flex items-center gap-4">
-            <button
-              className="rounded-full p-2 transition-colors hover:bg-gray-100"
+          <div className="flex items-center gap-0 sm:gap-4">
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => setIsSearchOpen((v) => !v)}
               aria-label="Search"
+              className="w-5 h-5"
             >
-              <Search className="h-5 w-5" />
-            </button>
+              <Search />
+            </Button>
 
-            <button
-              className="hidden rounded-full p-2 transition-colors hover:bg-gray-100 sm:flex"
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hidden sm:flex w-5 h-5"
               aria-label="Wishlist"
             >
-              <Heart className="h-5 w-5" />
-            </button>
+              <Link to="/wishlist" className="p-2 hover:bg-secondary rounded-full transition-colors hidden sm:flex relative" aria-label="Wishlist">
+              <Heart />
+              {wishlistCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+                  {wishlistCount}
+                </span>
+              )}
+            </Link>
+            </Button>
 
-            <button
-              className="rounded-full p-2 transition-colors hover:bg-gray-100"
-              aria-label="Account"
-            >
-              <User className="h-5 w-5" />
-            </button>
+            <AccountDropdown />
             <CartSheet/>
           </div>
         </div>

@@ -1,7 +1,7 @@
-import { useParams, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { Heart, ShoppingBag, Star, Filter } from "lucide-react";
 import { useState } from "react";
-import { products, getProductsByCategory } from "../data/products";
+import { products, getProductsByCategory, getNewArrivals, getSaleProducts } from "../data/products";
 import { useCart } from "../context/CartContext";
 
 const categoryInfo: Record<string, { title: string; description: string }> = {
@@ -32,7 +32,8 @@ const categoryInfo: Record<string, { title: string; description: string }> = {
 };
 
 const CategoryPage = () => {
-  const { category } = useParams();
+  const location = useLocation();
+  const category = location.pathname.replace("/", ""); // Extract category from path
   const { addToCart } = useCart();
   const [sortBy, setSortBy] = useState("featured");
 
@@ -42,9 +43,9 @@ const CategoryPage = () => {
   };
 
   let categoryProducts = category === "new-arrivals"
-    ? products.filter((p) => p.badge === "New")
+    ? getNewArrivals()
     : category === "sale"
-    ? products.filter((p) => p.badge === "Sale" || (p.originalPrice - p.price) / p.originalPrice > 0.3)
+    ? getSaleProducts()
     : getProductsByCategory(category || "");
 
   // If no specific products, show all

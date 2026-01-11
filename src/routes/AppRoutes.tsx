@@ -7,6 +7,8 @@ import NotFound from "../pages/NotFound";
 import CategoryPage from "../pages/CategoryPage";
 import { Toaster } from "../components/ui/toaster";
 import { Toaster as Sonner } from "../components/ui/sonner";
+import Account from "../pages/Account";
+import Login from "../pages/Login";
 
 const AppRoutes: React.FC = () => {
   return (
@@ -24,6 +26,11 @@ const AppRoutes: React.FC = () => {
         <Route path="/salwar" element={<CategoryPage />} />
         <Route path="/new-arrivals" element={<CategoryPage />} />
         <Route path="/sale" element={<CategoryPage />} />
+        <Route path="/login" element={<Login />} />
+        {/* <Route path="/signup" element={<Signup />} /> */}
+        <Route path="/account" element={<Account />} />
+        <Route path="/orders" element={<Account />} />
+        <Route path="/wishlist" element={<Account />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

@@ -1,7 +1,8 @@
 import { Heart, ShoppingBag, Star } from "lucide-react";
 import { Link } from "react-router-dom";
-import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
+import { products } from "../data/products";
+import { Button } from "../components/ui/button";
 
 const FeaturedProducts = () => {
   const { addToCart } = useCart();
@@ -64,16 +65,19 @@ const FeaturedProducts = () => {
 
                   {/* Add to Cart */}
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
-                    <button
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="w-full flex items-center justify-center gap-2 bg-foreground text-background py-3 !rounded-full font-medium hover:bg-primary transition-colors"
                       onClick={(e) => {
                         e.preventDefault();
                         handleAddToCart(product);
                       }}
-                      className="w-full flex items-center justify-center gap-2 bg-foreground text-background py-3 rounded-full font-medium hover:bg-primary transition-colors"
+                      aria-label="Add to Cart"
                     >
                       <ShoppingBag className="h-5 w-5" />
                       Add to Cart
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </Link>
