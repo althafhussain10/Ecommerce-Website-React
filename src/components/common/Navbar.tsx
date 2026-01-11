@@ -1,4 +1,4 @@
-import { Search, User, Menu, X, Heart } from "lucide-react";
+import { Search, Menu, X, Heart } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchResults from "../ui/SearchResults";

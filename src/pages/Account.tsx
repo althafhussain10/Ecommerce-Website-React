@@ -5,7 +5,7 @@ import { Label } from "../components/ui/label";
 import { useToast } from "../hooks/use-toast";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
-import { User, MapPin, Package, Heart, Settings } from "lucide-react";
+import { User, MapPin, Package, Heart } from "lucide-react";
 import { useUser } from "../context/UserContext";
 import { Input } from "../components/ui/Input";
 
